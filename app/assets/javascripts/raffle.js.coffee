@@ -1,7 +1,7 @@
 app = angular.module("Raffler", ["ngResource"])
 
 app.factory "Entry", ["$resource", ($resource) ->
-   $resource("/entries/:id", {id: @id}, {update: {method: "PUT"}})
+   $resource("/entries/:id", {id: "@id"}, {update: {method: "PUT"}})
 ]
 
 @RaffleCtrl = ["$scope", "Entry", ($scope, Entry) ->
@@ -20,5 +20,6 @@ app.factory "Entry", ["$resource", ($resource) ->
          entry = pool[Math.floor(Math.random()*pool.length)]
          entry.winner = true
          entry.$update()
-         $scope.lastWinner = entry
+         $scope.lastWinner = entry   
 ]
+
